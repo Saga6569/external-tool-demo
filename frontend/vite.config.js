@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   root: ".",
   server: {
-    allowedHosts: ["y8m47s-5173.csb.app"],
+    allowedHosts: ["fdq5dm-5173.csb.app"],
     proxy: {
       "/request_tool/": apiTarget,
       "/tool_result/": apiTarget,
