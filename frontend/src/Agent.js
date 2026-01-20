@@ -3,8 +3,7 @@ import { tools } from "./tools";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function runAgent({ onEvent } = {}) {
-  const apiBase =
-    import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const apiBase = import.meta.env.VITE_API_URL || "";
   const callId =
     typeof crypto !== "undefined" && crypto.randomUUID
       ? crypto.randomUUID()
