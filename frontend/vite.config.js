@@ -1,7 +1,18 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+const react = require("@vitejs/plugin-react");
 
-export default defineConfig({
+const apiTarget = process.env.VITE_API_URL || "http://localhost:8000";
+
+module.exports = {
   plugins: [react()],
-  root: '.',
-});
+  root: ".",
+  server: {
+    port: 5173,
+    host: "0.0.0.0",
+    allowedHosts: true,
+    proxy: {
+      "/agent/start": apiTarget,
+      "/agent/tool_result": apiTarget,
+      "/agent/result": apiTarget,
+    },
+  },
+};

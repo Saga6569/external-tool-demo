@@ -1,0 +1,17 @@
+{
+  "setupTasks": [],
+  "tasks": {
+    "backend": {
+      "name": "Backend: install + run",
+      "command": " cd backend && pip install -r requirements.txt && uvicorn server:app",
+      "workingDirectory": "backend",
+      "runAtStartup": true
+    },
+    "frontend": {
+      "name": "Frontend: install + run",
+      "command": "cd frontend && npm install && npm run dev",
+      "workingDirectory": "frontend",
+      "runAtStartup": true
+    }
+  }
+}
