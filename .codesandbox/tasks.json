@@ -1,7 +1,27 @@
 {
-  // These tasks will run in order when initializing your CodeSandbox project.
-  "setupTasks": [],
-
-  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
-  "tasks": {}
+  "setupTasks": ["setup:frontend", "setup:backend"],
+  "tasks": {
+    "setup:frontend": {
+      "name": "Install frontend deps",
+      "command": "npm install",
+      "workingDirectory": "frontend"
+    },
+    "setup:backend": {
+      "name": "Install backend deps",
+      "command": "python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt",
+      "workingDirectory": "backend"
+    },
+    "dev:backend": {
+      "name": "Start backend (FastAPI)",
+      "command": ". .venv/bin/activate && uvicorn server:app --host 0.0.0.0 --port 8000 --reload",
+      "workingDirectory": "backend",
+      "runAtStartup": true
+    },
+    "dev:frontend": {
+      "name": "Start frontend (Vite)",
+      "command": "npm run dev -- --host 0.0.0.0 --port 5173",
+      "workingDirectory": "frontend",
+      "runAtStartup": true
+    }
+  }
 }

@@ -7,10 +7,13 @@ export default defineConfig({
   plugins: [react()],
   root: ".",
   server: {
+    port: 5173,
+    host: "0.0.0.0",
     allowedHosts: ["fdq5dm-5173.csb.app"],
     proxy: {
-      "/request_tool/": apiTarget,
-      "/tool_result/": apiTarget,
+      "/agent/start": apiTarget,
+      "/agent/tool_result": apiTarget,
+      "/agent/result": apiTarget,
     },
   },
 });
